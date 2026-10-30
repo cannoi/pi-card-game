@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Card Game - Tiến Lên</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; background: #2c3e50; color: white; }
+        .card { background: white; color: black; padding: 20px; border-radius: 8px; display: inline-block; margin: 10px; cursor: pointer; }
+        .paf-made-by { position: fixed; bottom: 10px; right: 10px; font-size: 10px; opacity: 0.7; }
+    </style>
+<style>.paf-made-by{position:fixed;right:8px;bottom:8px;width:min(72px,12vw);max-width:12vw;height:auto;object-fit:contain;opacity:.5;background:transparent;padding:0;border:0;box-shadow:none;filter:none;pointer-events:none;z-index:30}</style></head>
+<body>
+    <div id="app">
+        <h1>Sảnh chờ Tiến Lên</h1>
+        <p>Luật chơi: Đánh bài theo thứ tự, quân lớn chặn quân nhỏ.</p>
+        <button onclick="startGame()">Bắt đầu ván mới</button>
+    </div>
+    <script>
+        function startGame() { window.location.href = '/game.html'; }
+    </script>
+    
+<img class="paf-made-by" src="/made-by.png" alt="Made with App Builder — Pi SoloHost"></body>
+</html>

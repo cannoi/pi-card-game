@@ -1,0 +1,19 @@
+<style>.paf-made-by{position:fixed;right:8px;bottom:8px;width:min(72px,12vw);max-width:12vw;height:auto;object-fit:contain;opacity:.5;background:transparent;padding:0;border:0;box-shadow:none;filter:none;pointer-events:none;z-index:30}</style>
+
+<!DOCTYPE html><html><body>
+<div id="game-container">
+  <div id="status"></div>
+  <div id="hand"></div>
+  <button id="start-btn">Bắt đầu</button>
+  <button id="play-btn" disabled>Đánh</button>
+</div>
+
+<script>
+  // Thêm logic xử lý trạng thái lỗi/trống
+  const statusDiv = document.getElementById('status');
+  function updateStatus(msg, isError = false) {
+    statusDiv.innerText = msg;
+    statusDiv.style.color = isError ? 'red' : 'black';
+  }
+</script>
+<img class="paf-made-by" src="/made-by.png" alt="Made with App Builder — Pi SoloHost"></body></html>
