@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Card Game - Tiến Lên</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; padding: 40px 20px; background: radial-gradient(circle, #2c3e50, #000000); min-height: 100vh; color: #f1c40f; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        button { padding: 15px 30px; font-size: 1.2rem; border: 2px solid #f1c40f; border-radius: 10px; background: transparent; color: #f1c40f; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-weight: bold; text-transform: uppercase; } button:hover { background: #f1c40f; color: #000; }
+        button:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+    </style>
+<style>.paf-made-by{position:fixed;right:8px;bottom:8px;width:min(72px,12vw);max-width:12vw;height:auto;object-fit:contain;opacity:.5;background:transparent;padding:0;border:0;box-shadow:none;filter:none;pointer-events:none;z-index:30}</style></head>
+<body>
+    <div id="app">
+        <h1>Sảnh chờ Tiến Lên</h1>
+        <p>Luật chơi: Đánh bài theo thứ tự, quân lớn chặn quân nhỏ.</p>
+        <button onclick="startGame()">Bắt đầu ván mới</button>
+    </div>
+    <script>
+        function startGame() { window.location.href = '/game.html'; }
+    </script>
+    
+<img class="paf-made-by" src="/made-by.png" alt="Made with App Builder — Pi SoloHost"></body>
+</html>

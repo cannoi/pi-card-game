@@ -1,0 +1,12 @@
+title: "Pi Card Game"
+eyebrow: SoloHost App
+description: "A simple and engaging card game designed for your desktop. Enjoy a clean interface, smooth gameplay, and classic card mechanics. Perfect for a quick break or casual relaxation anytime. Built to be lightweight, reliable, "
+footer_hint: "Only enter required secrets. Other settings use app defaults."
+output_file: .env
+after_save: "Settings saved. Start the app from SoloHost."
+fields:
+  - name: SOLOHOST_PROFILE
+    label: Solohost Profile
+    type: password
+    preserve_if_blank: true
+    help: "Required only if this app uses an admin login. Leave blank to use the app default."

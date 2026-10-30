@@ -1,0 +1,76 @@
+<style>.paf-made-by{position:fixed;right:8px;bottom:8px;width:min(72px,12vw);max-width:12vw;height:auto;object-fit:contain;opacity:.5;background:transparent;padding:0;border:0;box-shadow:none;filter:none;pointer-events:none;z-index:30}</style>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html><html><body style="background: radial-gradient(circle, #1a1a1a, #004d00); color: #f1c40f; font-family: 'Segoe UI', sans-serif; padding: 20px;">
+<div id="game-container" style="max-width: 800px; margin: auto; text-align: center;">
+  <h2 id="status" style="margin-bottom: 20px;">Nhấn Bắt đầu để chia bài</h2>
+  <select id="game-mode" style="padding: 10px; margin-bottom: 10px;">
+      <option value="tienlen">Tiến Lên (1 người)</option>
+      <option value="poker">Poker (5 lá)</option>
+      <option value="blackjack">Blackjack (21 điểm)</option>
+      <option value="multiplayer" disabled>Đang phát triển: Nhiều người chơi</option>
+  </select>
+  <div id="hand" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px;"></div>
+  <div style="display: flex; gap: 10px; justify-content: center;">
+      <button id="start-btn" style="padding: 10px 20px; cursor: pointer;">Bắt đầu</button>
+      <button id="play-btn" disabled style="padding: 10px 20px; cursor: pointer;">Đánh</button>
+  </div>
+</div>
+<style>
+    .card { background: #fff; color: #000; padding: 25px 20px; border-radius: 12px; border: 2px solid #f1c40f; cursor: pointer; transition: all 0.2s; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+    .card.selected { border-color: #e74c3c; transform: translateY(-10px); background: #fceaea; }
+</style>
+
+<script>
+  let hand = [];
+  const statusDiv = document.getElementById('status');
+  const handDiv = document.getElementById('hand');
+  const playBtn = document.getElementById('play-btn');
+
+  function updateStatus(msg, isError = false) {
+    statusDiv.innerText = msg;
+    statusDiv.style.color = isError ? 'red' : 'black';
+  }
+
+  function startGame() {
+    const mode = document.getElementById('game-mode').value;
+    const length = mode === 'poker' ? 5 : (mode === 'blackjack' ? 2 : 13);
+    hand = Array.from({length: length}, () => Math.floor(Math.random() * 52) + 1).sort((a, b) => a - b);
+    renderHand();
+    playBtn.disabled = false;
+    updateStatus('Đã chia bài kiểu ' + mode.toUpperCase() + '. Hãy chọn bài và đánh!');
+  }
+
+  function renderHand() {
+    handDiv.innerHTML = '';
+    hand.forEach((card) => {
+      const div = document.createElement('div');
+      div.className = 'card';
+      const suits = ['♠', '♥', '♦', '♣'];
+      const ranks = ['3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A', '2'];
+      const suit = suits[Math.floor((card - 1) / 13)];
+      const rank = ranks[(card - 1) % 13];
+      div.innerText = rank + suit;
+      div.dataset.value = card;
+      div.onclick = () => div.classList.toggle('selected');
+      handDiv.appendChild(div);
+    });
+  }
+
+  document.getElementById('start-btn').onclick = startGame;
+  playBtn.onclick = () => {
+    const selected = document.querySelectorAll('.card.selected');
+    if (selected.length === 0) return updateStatus('Vui lòng chọn ít nhất 1 lá bài!', true);
+    updateStatus('Đã đánh ' + selected.length + ' lá bài.');
+    selected.forEach(el => el.remove());
+  };
+</script>
+<img class="paf-made-by" src="/made-by.png" alt="Made with App Builder — Pi SoloHost"></body></html>
